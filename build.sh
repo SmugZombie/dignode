@@ -25,8 +25,16 @@ docker build -t $tag:$version .
 myname=$name"_1"
 docker run -td --restart unless-stopped -p 8111:80 --dns 8.8.8.8 --name $myname $tag:$version
 myname=$name"_2"
-docker run -td --restart unless-stopped -p 8112:80 --dns 1.1.1.1 --name $myname $tag:$version
+docker run -td --restart unless-stopped -p 8112:80 --dns 8.8.4.4 --name $myname $tag:$version
 myname=$name"_3"
-docker run -td --restart unless-stopped -p 8113:80 --dns 9.9.9.9 --name $myname $tag:$version
+docker run -td --restart unless-stopped -p 8113:80 --dns 1.1.1.1 --name $myname $tag:$version
 myname=$name"_4"
-docker run -td --restart unless-stopped -p 8114:80 --dns 208.67.222.222 --name $myname $tag:$version
+docker run -td --restart unless-stopped -p 8114:80 --dns 1.0.0.1 --name $myname $tag:$version
+myname=$name"_5"
+docker run -td --restart unless-stopped -p 8115:80 --dns 9.9.9.9 --name $myname $tag:$version
+myname=$name"_6"
+docker run -td --restart unless-stopped -p 8116:80 --dns 149.112.112.112 --name $myname $tag:$version
+myname=$name"_7"
+docker run -td --restart unless-stopped -p 8117:80 --dns 208.67.222.222 --name $myname $tag:$version
+myname=$name"_8"
+docker run -td --restart unless-stopped -p 8118:80 --dns 208.67.220.220 --name $myname $tag:$version
