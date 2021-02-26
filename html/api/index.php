@@ -40,6 +40,10 @@ switch(strtolower($method)){
         getResults($resultsrv);
         getResults($resultcname);
         break;
+    case "propagation":
+        $response['ip'] = gethostbyname($path[1]);
+        $response['http_status'] = getHTTPStatus($path[1], false);
+        $response['https_status'] = getHTTPStatus($path[1], true);
     default:
         $response['code'] = 404;
         $response['message'] = "Endpoint Unknown";
@@ -116,4 +120,18 @@ function getResolv(){
         }
     }
     return $nameservers;
+}
+
+function getHTTPStatus($domain, $secure){
+    /*$ch = curl_init($domain);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $content = curl_exec($ch);*/
+    if($secure){
+        return get_headers('https://'.$domain)[0];
+    }else{
+        return get_headers('http://'.$domain)[0];
+    }   
 }
