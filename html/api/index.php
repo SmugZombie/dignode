@@ -44,6 +44,7 @@ switch(strtolower($method)){
         $response['ip'] = gethostbyname($path[1]);
         $response['http_status'] = getHTTPStatus($path[1], false);
         $response['https_status'] = getHTTPStatus($path[1], true);
+        break;
     default:
         $response['code'] = 404;
         $response['message'] = "Endpoint Unknown";
